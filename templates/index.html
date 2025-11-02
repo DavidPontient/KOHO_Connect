@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+  <h2>Create a Post</h2>
+  <form method="post" action="/post" class="post-form">
+    <input type="text" name="name" placeholder="Your name" required />
+
+    <select name="type">
+      <option value="question">Question</option>
+      <option value="achievement">Achievement</option>
+      <option value="performance">Weekly Performance</option>
+    </select>
+
+    <textarea name="message" rows="4" placeholder="Write your post here..." required></textarea>
+    <button type="submit">Post</button>
+  </form>
+</section>
+
+<section class="feed">
+  {% if posts %}
+    {% for post in posts %}
+    <article class="post">
+      <div class="post-header">
+        <strong class="post-name">{{ post.name }}</strong>
+        <span class="post-date">{{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+      </div>
+      <p class="post-message">{{ post.message }}</p>
+      <div class="post-type">Type: {{ post.type }}</div>
+    </article>
+    {% endfor %}
+  {% else %}
+    <p class="muted">No posts yet. Start by sharing your weekly update or a question!</p>
+  {% endif %}
+</section>
+{% endblock %}
