@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOHO Connect - Customer Service Hub</title>
+  <link href="/static/css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <img src="/static/img/koho-logo.png" alt="KOHO logo" class="logo" onerror="this.style.display='none'" />
+      <h1>KOHO Connect: Customer Service Interaction Hub</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer container">
+    <p>Built for KOHO internship artefact — share questions, achievements, and weekly reflections.</p>
+  </footer>
+</body>
+</html>
