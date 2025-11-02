@@ -13,7 +13,7 @@ db_path = os.path.join(basedir, 'koho_connect.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# activating the DB (db object from models.py)
+# this will start the DB (db object from models.py)
 db.init_app(app)
 
 with app.app_context():
