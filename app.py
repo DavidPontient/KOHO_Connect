@@ -7,13 +7,13 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET', 'dev-secret')
 
-# Database configuration (sqlite in project folder)
+# configuring DB (sqlite in project folder)
 basedir = os.path.abspath(os.path.dirname(__file__))
 db_path = os.path.join(basedir, 'koho_connect.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize DB (db object from models.py)
+# activating the DB (db object from models.py)
 db.init_app(app)
 
 with app.app_context():
